@@ -10,6 +10,7 @@ import { PricingPlan } from '../../../../core/models/pricing-plan.model';
 export class PlanSelector {
 
   plans = input<PricingPlan[]>([]);
+  selectedPlan = input<string>('starter');
 
   planSelected = output<string>();
 }

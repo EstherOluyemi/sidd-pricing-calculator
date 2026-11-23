@@ -1,1 +1,32 @@
-<p>plan-selector works!</p>
+<div>
+    <h2 class="text-lg font-semibold text-slate-900">
+        Choose a pricing plan
+    </h2>
+
+    <p class="mt-1 text-sm text-slate-500">
+        Select the plan that best suits your transaction volume.
+    </p>
+
+    <div class="mt-5 space-y-3">
+        @for (plan of plans(); track plan.id) {
+        <button type="button"
+            class="w-full rounded-xl border border-slate-200 p-4 text-left transition hover:border-violet-400 hover:bg-violet-50"
+            (click)="planSelected.emit(plan.id)" [class.border-violet-600]="selectedPlan() === plan.id"
+            [class.bg-violet-50]="selectedPlan() === plan.id" [attr.aria-pressed]="selectedPlan() === plan.id">
+            <div class="flex items-center justify-between">
+                <span class="font-semibold text-slate-900">
+                    {{ plan.name }}
+                </span>
+
+                <span class="font-semibold text-violet-600">
+                    {{ plan.rateInBasisPoints / 100 }}%
+                </span>
+            </div>
+
+            <p class="mt-1 text-sm text-slate-500">
+                {{ plan.description }}
+            </p>
+        </button>
+        }
+    </div>
+</div>
