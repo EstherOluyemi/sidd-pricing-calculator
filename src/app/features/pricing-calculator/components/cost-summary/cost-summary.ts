@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './cost-summary.css',
   templateUrl: './cost-summary.html',
 })
-export class CostSummary {}
+export class CostSummary {
+  monthlyVolume = input<number | null>(null);
+  feePerTransaction = input<number | null>(null);
+  monthlyFees = input<number | null>(null);
+  vat = input<number | null>(null);
+  totalMonthlyCost = input<number | null>(null);
+}

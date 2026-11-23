@@ -6,7 +6,7 @@ export function calculateMonthlyVolume(
         !isValidTransactionAmount(amountInKobo) ||
         !isValidTransactionCount(transactionCount)
     ) {
-        return amountInKobo * transactionCount;
+        return null;
     }
 
     const volume = BigInt(amountInKobo) * BigInt(transactionCount);

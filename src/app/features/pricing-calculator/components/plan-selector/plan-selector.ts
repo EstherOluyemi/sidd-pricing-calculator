@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { PricingPlan } from '../../../../core/models/pricing-plan.model';
 
 @Component({
   imports: [],
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './plan-selector.css',
   templateUrl: './plan-selector.html',
 })
-export class PlanSelector {}
+export class PlanSelector {
+
+  plans = input<PricingPlan[]>([]);
+
+  planSelected = output<string>();
+}

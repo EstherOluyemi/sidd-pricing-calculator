@@ -1,15 +1,13 @@
-import { TestBed } from '@angular/core/testing';
-import { PricingPlans } from './pricing-plans';
+import { describe, it, expect } from 'vitest';
+import { PRICING_PLANS } from './pricing-plans';
 
-describe('PricingPlans', () => {
-  let service: PricingPlans;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PricingPlans);
+describe('PRICING_PLANS', () => {
+  it('should contain three pricing plans', () => {
+    expect(PRICING_PLANS).toHaveLength(3);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should have the correct plan rates', () => {
+    expect(PRICING_PLANS.map(plan => plan.rateInBasisPoints))
+      .toEqual([150, 120, 100]);
   });
 });

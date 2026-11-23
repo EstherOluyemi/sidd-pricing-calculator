@@ -5,18 +5,18 @@ export const PRICING_PLANS: PricingPlan[] = [
         id: 'starter',
         name: 'Starter',
         description: 'For businesses getting started',
-        rateInBasisPoints: 1.5,
+        rateInBasisPoints: 150,
     },
     {
         id: 'growth',
         name: 'Growth',
         description: 'For growing businesses',
-        rateInBasisPoints: 1.2,
+        rateInBasisPoints: 120,
     },
     {
         id: 'enterprise',
         name: 'Enterprise',
         description: 'For established businesses',
-        rateInBasisPoints: 1.0,
+        rateInBasisPoints: 100,
     },
 ]

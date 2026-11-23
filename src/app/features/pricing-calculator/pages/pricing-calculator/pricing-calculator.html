@@ -1,1 +1,8 @@
-<p>pricing-calculator works!</p>
+<app-plan-selector [plans]="pricingPlans" (planSelected)="selectedPlan.set($event)"></app-plan-selector>
+
+<app-transaction-inputs [amount]="transactionAmount()" [count]="transactionCount()"
+    (amountChanged)="transactionAmount.set($event)"
+    (countChanged)="transactionCount.set($event)"></app-transaction-inputs>
+
+<app-cost-summary [monthlyVolume]="monthlyVolume()" [feePerTransaction]="feePerTransaction()"
+    [monthlyFees]="monthlyFees()" [vat]="vat()" [totalMonthlyCost]="totalMonthlyCost()"></app-cost-summary>
