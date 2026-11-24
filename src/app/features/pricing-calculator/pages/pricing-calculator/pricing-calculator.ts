@@ -11,9 +11,10 @@ import { PRICING_PLANS } from '../../../../core/data/pricing-plans';
 import { PlanSelector } from '../../components/plan-selector/plan-selector';
 import { TransactionInputs } from '../../components/transaction-inputs/transaction-inputs';
 import { CostSummary } from '../../components/cost-summary/cost-summary';
+import { LucideSun, LucideMoon } from '@lucide/angular';
 
 @Component({
-  imports: [PlanSelector, TransactionInputs, CostSummary],
+  imports: [PlanSelector, TransactionInputs, CostSummary, LucideMoon, LucideSun],
   selector: 'app-pricing-calculator',
   styleUrl: './pricing-calculator.css',
   templateUrl: './pricing-calculator.html',
@@ -23,6 +24,8 @@ export class PricingCalculator {
   transactionAmount = signal<number | null>(null);
   transactionCount = signal<number | null>(null);
   selectedPlan = signal('starter');
+
+  isDarkMode = signal(localStorage.getItem('theme') === 'dark');
 
   pricingPlans = PRICING_PLANS;
 
@@ -77,4 +80,13 @@ export class PricingCalculator {
 
     return calculateTotalCost(fees, vatAmount);
   });
+
+  toggleTheme(): void {
+    this.isDarkMode.update((currentTheme) => !currentTheme);
+
+    localStorage.setItem(
+      'theme',
+      this.isDarkMode() ? 'dark' : 'light'
+    );
+  }
 }
