@@ -1,1 +1,48 @@
-<p>transaction-inputs works!</p>
+<div>
+    <h2 class="text-lg font-semibold text-slate-900">
+        Transaction details
+    </h2>
+
+    <p class="mt-1 text-sm text-slate-500">
+        Enter your expected monthly transaction activity.
+    </p>
+
+    <div class="mt-5 space-y-5">
+
+        <div>
+            <label for="transactionAmount" class="mb-2 block text-sm font-medium text-slate-700">
+                Amount per transaction
+            </label>
+
+            <div
+                class="flex items-center rounded-xl border border-slate-200 bg-white focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-100">
+                <span class="pl-4 text-sm font-medium text-slate-500">
+                    ₦
+                </span>
+
+                <input id="transactionAmount" type="number" min="0" step="0.01" placeholder="e.g. 2500.00"
+                    class="w-full rounded-xl bg-transparent px-3 py-3 text-sm text-slate-900 outline-none"
+                    [value]="amountInNaira" (input)="onAmountInput($any($event.target).value)" />
+            </div>
+
+            <p class="mt-2 text-xs text-slate-400">
+                Enter the amount.
+            </p>
+        </div>
+
+        <div>
+            <label for="transactionCount" class="mb-2 block text-sm font-medium text-slate-700">
+                Number of transactions per month
+            </label>
+
+            <input id="transactionCount" type="number" min="0" step="1" placeholder="e.g. 500"
+                class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-violet-500 focus:ring-2 focus:ring-violet-100"
+                [value]="count() ?? ''" (input)="onCountInput($any($event.target).value)" />
+
+            <p class="mt-2 text-xs text-slate-400">
+                Enter the expected number of monthly transactions.
+            </p>
+        </div>
+
+    </div>
+</div>

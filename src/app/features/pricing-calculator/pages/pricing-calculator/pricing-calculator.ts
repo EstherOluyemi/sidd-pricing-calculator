@@ -20,20 +20,26 @@ import { CostSummary } from '../../components/cost-summary/cost-summary';
 })
 export class PricingCalculator {
 
-  transactionAmount = signal(0);
-  transactionCount = signal(0);
+  transactionAmount = signal<number | null>(null);
+  transactionCount = signal<number | null>(null);
   selectedPlan = signal('starter');
 
   pricingPlans = PRICING_PLANS;
 
-  monthlyVolume = computed(() =>
-    calculateMonthlyVolume(
-      this.transactionAmount(),
-      this.transactionCount()
-    )
-  );
+  monthlyVolume = computed(() => {
+    const amount = this.transactionAmount();
+    const count = this.transactionCount();
+
+    if (amount === null || count === null) return null;
+
+    return calculateMonthlyVolume(amount, count);
+  });
 
   feePerTransaction = computed(() => {
+    const amount = this.transactionAmount();
+
+    if (amount === null) return null;
+
     const plan = PRICING_PLANS.find(
       (plan) => plan.id === this.selectedPlan()
     );
@@ -41,17 +47,18 @@ export class PricingCalculator {
     if (!plan) return null;
 
     return calculateTransactionFee(
-      this.transactionAmount(),
+      amount,
       plan.rateInBasisPoints
     );
   });
 
   monthlyFees = computed(() => {
     const fee = this.feePerTransaction();
+    const count = this.transactionCount();
 
-    if (fee === null) return null;
+    if (fee === null || count === null) return null;
 
-    return calculateMonthlyFees(fee, this.transactionCount());
+    return calculateMonthlyFees(fee, count);
   });
 
   vat = computed(() => {

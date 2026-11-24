@@ -1,1 +1,58 @@
-<p>cost-summary works!</p>
+<div>
+    <div class="mb-6">
+        <h2 class="text-lg font-semibold text-slate-900">
+            Cost Summary
+        </h2>
+
+        <p class="mt-1 text-sm text-slate-500">
+            A breakdown of your estimated monthly transaction costs.
+        </p>
+    </div>
+
+    <div class="space-y-4">
+        <div class="flex items-center justify-between">
+            <span class="text-sm text-slate-600">Monthly Transaction Volume</span>
+            <span class="text-sm font-medium text-slate-900">
+                {{ formatAmount(monthlyVolume()) }}
+            </span>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <span class="text-sm text-slate-600">Fee per Transaction</span>
+            <span class="text-sm font-medium text-slate-900">
+                {{ formatAmount(feePerTransaction()) }}
+            </span>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <span class="text-sm text-slate-600">Monthly Processing Fees</span>
+            <span class="text-sm font-medium text-slate-900">
+                {{ formatAmount(monthlyFees()) }}
+            </span>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <span class="text-sm text-slate-600">VAT (7.5%)</span>
+            <span class="text-sm font-medium text-slate-900">
+                {{ formatAmount(vat()) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="my-6 border-t border-slate-200"></div>
+
+    <div class="flex items-center justify-between">
+        <div>
+            <h3 class="text-base font-semibold text-slate-900">
+                Total Monthly Cost
+            </h3>
+            <p class="mt-1 text-xs text-slate-500">
+                Including VAT
+            </p>
+        </div>
+
+        <span class="text-2xl font-bold text-violet-600">
+            {{ formatAmount(totalMonthlyCost()) }}
+        </span>
+    </div>
+</div>

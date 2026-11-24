@@ -1,4 +1,8 @@
 import { Component, input, output } from '@angular/core';
+import {
+  convertNairaToKobo,
+  isValidTransactionCount,
+} from '../../../../core/utils/pricing-calculation';
 
 @Component({
   imports: [],
@@ -7,10 +11,34 @@ import { Component, input, output } from '@angular/core';
   templateUrl: './transaction-inputs.html',
 })
 export class TransactionInputs {
+  amount = input<number | null>(null);
+  count = input<number | null>(null);
 
-  amount = input<number>(0);
-  count = input<number>(0);
+  amountChanged = output<number | null>();
+  countChanged = output<number | null>();
 
-  amountChanged = output<number>();
-  countChanged = output<number>();
+  onAmountInput(value: string): void {
+    this.amountChanged.emit(
+      value === '' ? null : convertNairaToKobo(value)
+    );
+  }
+
+  onCountInput(value: string): void {
+    if (value === '') {
+      this.countChanged.emit(null);
+      return;
+    }
+
+    const count = Number(value);
+
+    this.countChanged.emit(
+      isValidTransactionCount(count) ? count : null
+    );
+  }
+
+  get amountInNaira(): string {
+    const amount = this.amount();
+
+    return amount === null ? '' : (amount / 100).toString();
+  }
 }

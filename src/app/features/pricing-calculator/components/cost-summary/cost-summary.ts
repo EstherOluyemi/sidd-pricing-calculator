@@ -1,4 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { formatKoboAsNaira } from '../../../../core/utils/pricing-calculation';
 
 @Component({
   imports: [],
@@ -12,4 +13,10 @@ export class CostSummary {
   monthlyFees = input<number | null>(null);
   vat = input<number | null>(null);
   totalMonthlyCost = input<number | null>(null);
+
+  formatAmount(amount: number | null): string {
+    if (amount === null) return '-';
+
+    return formatKoboAsNaira(amount);
+  }
 }
