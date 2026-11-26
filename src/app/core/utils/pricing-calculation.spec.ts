@@ -72,23 +72,31 @@ describe('calculateMonthlyVolume', () => {
 
 describe('calculateTransactionFee', () => {
     it('should calculate the Starter plan fee at 1.5%', () => {
-        expect(calculateTransactionFee(100000, 150)).toBe(1500);
+        expect(calculateTransactionFee(100000, 150, 50000)).toBe(1500);
     });
 
     it('should calculate the Growth plan fee at 1.2%', () => {
-        expect(calculateTransactionFee(100000, 120)).toBe(1200);
+        expect(calculateTransactionFee(100000, 120, 100000)).toBe(1200);
     });
 
     it('should calculate the Enterprise plan fee at 1.0%', () => {
-        expect(calculateTransactionFee(100000, 100)).toBe(1000);
+        expect(calculateTransactionFee(100000, 100, 200000)).toBe(1000);
     });
 
     it('should return zero when the transaction amount is zero', () => {
-        expect(calculateTransactionFee(0, 150)).toBe(0);
+        expect(calculateTransactionFee(0, 150, 50000)).toBe(0);
     });
 
     it('should round the fee to the nearest kobo', () => {
-        expect(calculateTransactionFee(101, 150)).toBe(2);
+        expect(calculateTransactionFee(101, 150, 50000)).toBe(2);
+    });
+
+    it('should return the fee cap when the calculated fee reaches the cap', () => {
+        expect(calculateTransactionFee(3333333, 150, 50000)).toBe(50000);
+    });
+
+    it('should not allow the fee to exceed the cap', () => {
+        expect(calculateTransactionFee(10000000, 150, 50000)).toBe(50000);
     });
 });
 

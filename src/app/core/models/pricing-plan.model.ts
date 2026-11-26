@@ -3,4 +3,5 @@ export interface PricingPlan {
     name: string;
     description: string;
     rateInBasisPoints: number;
+    feeCapInKobo: number;
 }

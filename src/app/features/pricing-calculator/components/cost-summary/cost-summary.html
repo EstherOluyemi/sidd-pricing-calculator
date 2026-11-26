@@ -1,71 +1,71 @@
 <div>
     <div class="mb-6">
-        <h2 class="text-lg font-semibold text-slate-900">
+        <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
             Cost Summary
         </h2>
 
-        <p class="mt-1 text-sm text-slate-500">
+        <p class="mt-1 text-sm text-slate-500 dark:text-[#A1A1AA]">
             A breakdown of your estimated monthly transaction costs.
         </p>
     </div>
 
     <div class="space-y-5">
         <div class="flex items-center justify-between gap-4">
-            <span class="text-sm text-slate-600">
+            <span class="text-sm text-slate-600 dark:text-[#A1A1AA]">
                 Monthly Transaction Volume
             </span>
 
-            <span class="text-sm font-medium text-slate-900">
+            <span class="text-sm font-medium text-slate-900 dark:text-[#E5E5E5]">
                 {{ formatAmount(monthlyVolume()) }}
             </span>
         </div>
 
         <div class="flex items-center justify-between gap-4">
-            <span class="text-sm text-slate-600">
+            <span class="text-sm text-slate-600 dark:text-[#A1A1AA]">
                 Fee per Transaction
             </span>
 
-            <span class="text-sm font-medium text-slate-900">
+            <span class="text-sm font-medium text-slate-900 dark:text-[#E5E5E5]">
                 {{ formatAmount(feePerTransaction()) }}
             </span>
         </div>
 
         <div class="flex items-center justify-between gap-4">
-            <span class="text-sm text-slate-600">
+            <span class="text-sm text-slate-600 dark:text-[#A1A1AA]">
                 Monthly Processing Fees
             </span>
 
-            <span class="text-sm font-medium text-slate-900">
+            <span class="text-sm font-medium text-slate-900 dark:text-[#E5E5E5]">
                 {{ formatAmount(monthlyFees()) }}
             </span>
         </div>
 
         <div class="flex items-center justify-between gap-4">
-            <span class="text-sm text-slate-600">
+            <span class="text-sm text-slate-600 dark:text-[#A1A1AA]">
                 VAT (7.5%)
             </span>
 
-            <span class="text-sm font-medium text-slate-900">
+            <span class="text-sm font-medium text-slate-900 dark:text-[#E5E5E5]">
                 {{ formatAmount(vat()) }}
             </span>
         </div>
     </div>
 
-    <div class="my-6 border-t border-dashed border-slate-200"></div>
+    <div class="my-6 border-t border-dashed border-slate-200 dark:border-[#303030]"></div>
 
-    <div class="rounded-xl bg-violet-50 p-4">
+    <div class="rounded-xl bg-violet-50 p-4 dark:bg-[#241B35]">
         <div class="flex items-center justify-between gap-4">
             <div>
-                <h3 class="text-base font-semibold text-slate-900">
+                <h3 class="text-base font-semibold text-slate-900 dark:text-white">
                     Total Monthly Cost
                 </h3>
 
-                <p class="mt-1 text-xs text-slate-500">
+                <p class="mt-1 text-xs text-slate-500 dark:text-[#A1A1AA]">
                     Including VAT
                 </p>
             </div>
 
-            <span class="text-2xl font-bold tracking-tight text-violet-700">
+            <span class="text-2xl font-bold tracking-tight text-violet-700 dark:text-[#C4A7FF]">
                 {{ formatAmount(totalMonthlyCost()) }}
             </span>
         </div>

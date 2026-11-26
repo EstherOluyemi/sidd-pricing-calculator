@@ -51,7 +51,8 @@ export class PricingCalculator {
 
     return calculateTransactionFee(
       amount,
-      plan.rateInBasisPoints
+      plan.rateInBasisPoints,
+      plan.feeCapInKobo
     );
   });
 

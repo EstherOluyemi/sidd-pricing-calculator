@@ -18,18 +18,24 @@ export function calculateMonthlyVolume(
 export function calculateTransactionFee(
     amountInKobo: number,
     rateInBasisPoints: number,
+    feeCapInKobo: number,
 ): number | null {
     if (
         !isValidTransactionAmount(amountInKobo) ||
         !Number.isSafeInteger(rateInBasisPoints) ||
-        rateInBasisPoints < 0
+        rateInBasisPoints < 0 ||!isValidTransactionAmount(feeCapInKobo)
     ) {
         return null;
     }
 
-    const fee = Number(
-        (BigInt(amountInKobo) * BigInt(rateInBasisPoints) + 5000n) / 10000n
-    );
+    const calculatedFee =
+        (BigInt(amountInKobo) * BigInt(rateInBasisPoints) + 5000n) / 10000n;
+
+    const cappedFee = calculatedFee > BigInt(feeCapInKobo)
+        ? BigInt(feeCapInKobo)
+        : calculatedFee;
+
+    const fee = Number(cappedFee);
 
     return Number.isSafeInteger(fee) ? fee : null;
 }

@@ -16,24 +16,48 @@ export class TransactionInputs {
 
   amountChanged = output<number | null>();
   countChanged = output<number | null>();
+  amountError = '';
+  amountInputValue = '';
+  countError = '';
+  countInputValue = '';
 
   onAmountInput(value: string): void {
-    this.amountChanged.emit(
-      value === '' ? null : convertNairaToKobo(value)
-    );
+    this.amountInputValue = value;
+
+    if (value === '') {
+      this.amountError = '';
+      this.amountChanged.emit(null);
+      return;
+    }
+
+    const amountInKobo = convertNairaToKobo(value);
+
+    if (amountInKobo === null) {
+      this.amountError = 'Enter a valid amount';
+      this.amountChanged.emit(null);
+      return;
+    }
+
+    this.amountError = '';
+    this.amountChanged.emit(amountInKobo);
   }
 
   onCountInput(value: string): void {
+    this.countInputValue = value;
+
     if (value === '') {
+      this.countError = '';
       this.countChanged.emit(null);
       return;
     }
 
     const count = Number(value);
 
-    this.countChanged.emit(
-      isValidTransactionCount(count) ? count : null
-    );
+    if (!isValidTransactionCount(count)) {
+      this.countError = 'Enter a valid whole number of transaction.';
+      this.countChanged.emit(null);
+      return;
+    }
   }
 
   get amountInNaira(): string {
