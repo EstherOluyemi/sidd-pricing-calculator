@@ -1,59 +1,85 @@
-# SiddPricingCalculator
+# SIDD Pricing Calculator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.4.
+A responsive pricing calculator built with Angular. It helps businesses estimate their monthly transaction processing costs based on their selected pricing plan, transaction amount, and monthly transaction count.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Three pricing plans: Starter, Growth, and Enterprise.
+- Live calculation of transaction fees and monthly costs.
+- Per-transaction fee caps.
+- Automatic VAT calculation.
+- Side-by-side comparison of two pricing plans.
+- Light and dark themes.
+- Input validation for transaction amounts and counts.
+- Currency formatting in Nigerian Naira (NGN).
 
-```bash
+## Tech Stack
+
+- Angular
+- TypeScript
+- Tailwind CSS
+- Vitest
+- Lucide Icons
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+\`\`\`bash
+git clone https://github.com/EstherOluyemi/sidd-pricing-calculator.git
+\`\`\`
+
+Navigate into the project:
+
+\`\`\`bash
+cd sidd-pricing-calculator
+\`\`\`
+
+Install dependencies:
+
+\`\`\`bash
+npm install
+\`\`\`
+
+Start the development server:
+
+\`\`\`bash
 ng serve
-```
+\`\`\`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200/` in your browser.
 
-## Code scaffolding
+## Testing
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Run the test suite:
 
-```bash
-ng generate component component-name
-```
+\`\`\`bash
+ng test --watch=false
+\`\`\`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Production Build
 
-```bash
-ng generate --help
-```
+Build the application:
 
-## Building
-
-To build the project run:
-
-```bash
+\`\`\`bash
 ng build
-```
+\`\`\`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The production build is generated in the `dist/` directory.
 
-## Running unit tests
+## Pricing Assumptions
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+The pricing rates, transaction fee caps, and VAT rate currently used in this project are illustrative values for the calculator assignment. They should not be interpreted as verified official SIDD pricing information or tax guidance.
 
-```bash
-ng test
-```
+## Author
 
-## Running end-to-end tests
+Esther Oluyemi
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+GitHub: [EstherOluyemi](https://github.com/EstherOluyemi)
