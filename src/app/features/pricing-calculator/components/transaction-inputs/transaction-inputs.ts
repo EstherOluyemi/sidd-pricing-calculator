@@ -58,6 +58,9 @@ export class TransactionInputs {
       this.countChanged.emit(null);
       return;
     }
+
+    this.countError = '';
+    this.countChanged.emit(count);
   }
 
   get amountInNaira(): string {
